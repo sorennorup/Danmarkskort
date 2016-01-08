@@ -42,7 +42,48 @@ function printInfo(a){
       return centerObject;
       
      }
-     
+    function zoominOnCenter(zoom){
+      
+      var latLng = onIndexClicked();
+   splitStr = latLng.split(",");
+   var center =new google.maps.LatLng(parseFloat(splitStr[0]),parseFloat(splitStr[1]));
+    var zoom = zoom;
+    
+    var mapProp = {
+     center:center,
+     zoomControl:false,  
+     scaleControl:false,
+     scrollwheel:false,
+     keyboardShortcuts:false,
+     disableDefaultUI: false,
+     zoom:zoom,
+
+  };
+  
+       
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    
+//styling the map
+map.setOptions({zoomControl:true, scrollwheel: false ,navigationControl: false,
+    mapTypeControl: true,
+    scaleControl: true,
+    draggable: true,
+    zooom:true,
+    //styles: styles
+    
+    }  
+    );
+    
+   var obj = createCenterObject();
+ 
+ for(var i=0;i<jArray.length;i++){
+          obj[i].marker(map).setMap(map);
+           
+            }         
+   
+              center.marker.setMap(map);
+           
+    }
 
  function initialize(zoom,place)
 {
@@ -64,16 +105,7 @@ function printInfo(a){
   var center=new google.maps.LatLng(55.472174, 9.134411);
   var zoom = zoom;
  }
- else if (place = "5"){
-   var latLng = onIndexClicked();
-   splitStr = latLng.split(",");
-   var center =new google.maps.LatLng(parseFloat(splitStr[0]),parseFloat(splitStr[1]));
-    var zoom = zoom;
-    
-  
  
- 
- }
  
  
  else{
@@ -105,7 +137,7 @@ function printInfo(a){
 ];
 //styling the map
 map.setOptions({zoomControl:true, scrollwheel: false ,navigationControl: false,
-    mapTypeControl: false,
+    mapTypeControl: true,
     scaleControl: true,
     draggable: true,
     zooom:true,
@@ -121,7 +153,7 @@ map.setOptions({zoomControl:true, scrollwheel: false ,navigationControl: false,
           obj[i].marker(map).setMap(map);
            
             }         
-  
+   
               center.marker.setMap(map);
         
 
@@ -141,7 +173,7 @@ map.setOptions({zoomControl:true, scrollwheel: false ,navigationControl: false,
     
   
     
-   <select id="names" onclick="initialize(20,'5')"></select>
+   <select id="names" onclick="zoominOnCenter(18)"></select>
 <div id="googleMap" style="width:100%;height:600px; "> </div>
 
 <script>
