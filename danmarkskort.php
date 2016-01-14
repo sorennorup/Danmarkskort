@@ -1,4 +1,4 @@
-﻿<?php include "stamkort_data.php";?>
+<?php include "stamkort_data.php";// test ?> 
 
 <script type="text/javascript">var jArray= <?php echo json_encode($exValues ); ?>;
 function printInfo(a){
