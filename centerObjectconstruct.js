@@ -51,15 +51,33 @@ function(map){
         +"<br/>"+"<b>Dækker:</b> "+this.covers +"<br/> "+"<b>Telefon:</b> "+this.telefon+"<br/> "+"<b>Email:</b> "+this.email+"<br/> "+"<b>Hjemmeside:</b> <a href = "+this.url+ text_url+" </a>"+"<br/> </div>"
        
 });
+
+var infoW2 = new google.maps.InfoWindow({
+      maxWidth:500,
+      content: this.centerName
+      
+      
+      });
+      
        google.maps.event.addListener(mark, "click", function() {
             
            infoW.open(map,mark);
           
-          
+          infoW.close();
            
            
     });
-     
+     google.maps.event.addListener(mark, "mouseover", function(){
+         
+         infoW2.open(map,mark);
+         
+         });
+       
+       google.maps.event.addListener(mark, "mouseout", function(){
+         
+         infoW2.close();
+         
+         });
      
        /*google.maps.event.addListener(mark,"click",function(){
        
