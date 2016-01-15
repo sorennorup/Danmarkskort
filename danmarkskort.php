@@ -1,10 +1,6 @@
-<?php include "stamkort_data.php";// test ?> 
+<?php error_reporting(0); include "stamkort_data.php";?>
 
 <script type="text/javascript">var jArray= <?php echo json_encode($exValues ); ?>;
-function printInfo(a){
-  print(a);
-  
-}
 
 </script>
 
