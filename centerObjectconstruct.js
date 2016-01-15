@@ -5,6 +5,7 @@ var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 var pinColor = "336699";
  
  function uuCenter(centerName,leader,adress,lat,lng,telefon,email,url,covers,space,marker){
+   var text_url = url.substring(11);
 this.centerName=centerName;
 this.leader=leader;
 this.adress=adress;
@@ -13,7 +14,7 @@ this.lat=lat;
 this.lng=lng;
 this.telefon=telefon;
 this.email=email;
-this.url=url;
+this.url= url+ ' target="_blank" >';
 this.covers = covers;
 this.space=
 function(){
@@ -47,7 +48,7 @@ function(map){
          maxWidth:500,
        
         content:" <div style='width:auto;height:100px;font-family:calibri;z-index:-1;'> <b>Centernavn:</b> "+this.centerName+"<br> "+"<b>Centerleder:</b> "+this.leader+"<br/> "+"<b>Adresse:</b> "+this.adress
-        +"<br/>"+"<b>Dækker:</b> "+this.covers +"<br/> "+"<b>Telefon:</b> "+this.telefon+"<br/> "+"<b>Email:</b> "+this.email+"<br/> "+"<b>Hjemmeside:</b> <a href="+this.url+">"+this.url+"</a>"+"<br/> </div>"
+        +"<br/>"+"<b>Dækker:</b> "+this.covers +"<br/> "+"<b>Telefon:</b> "+this.telefon+"<br/> "+"<b>Email:</b> "+this.email+"<br/> "+"<b>Hjemmeside:</b> <a href = "+this.url+ text_url+" </a>"+"<br/> </div>"
        
 });
        google.maps.event.addListener(mark, "click", function() {
